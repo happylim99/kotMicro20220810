@@ -1,0 +1,60 @@
+server:
+  port: 9003
+  error:
+    includeStackTrace: never
+
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:9000/eureka
+
+spring:
+  # application:
+  #   name: auth-ws
+  # datasource:
+  #   url: jdbc:mysql://localhost:3306/auth_ws
+  #   username: auth_ws
+  #   password: '@Auth123511'
+  # jpa:
+  #   hibernate:
+  #     ddlAuto: update
+  #   show-sql: false
+  #   properties:
+  #     hibernate:
+  #       format_sql: true
+  #       dialect: org.hibernate.dialect.MySQL8Dialect
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  cloud:
+    bus:
+      enabled: true
+      refresh:
+        enabled: true
+#  main:
+#    allow-bean-definition-overriding: true
+
+#hibernate:
+#  enable_lazy_load_no_trans: true
+
+## Security
+secret:
+  token: '{cipher}d43dec912808f5e5f5fc1b65bcff2583eb0498705aac6bcb7d6e1087d96bd4a95c515e9d49d7032bfecf82c30a2b909d'
+
+## gmail
+gmail:
+  smtp_host: smtp.gmail.com
+  smtp_port: 587
+  smtp_username: tianhui3010@gmail.com
+  smtp_password: '{cipher}8fc6fea5b94203365f22ea14f9addb0873e6bc69fa8749a124f6fd84b513a445ec233c01d5e469e0ce0c3797d11eb3f5'
+  smtp_sender: tianhui3010@gmail.com
+  smtp_properties:
+    mail:
+      smtp:
+        auth: true
+        starttls:
+          enable: true

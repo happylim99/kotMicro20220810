@@ -1,0 +1,47 @@
+server:
+  port: 9004
+  error:
+    includeStackTrace: never
+
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:9000/eureka
+
+spring:
+#   application:
+#     name: sample-ws
+#   datasource:
+#     url: jdbc:mysql://localhost:3306/sample_ws
+#     username: sample_ws
+#     password: '@Samp191011'
+#   jpa:
+#     hibernate:
+#       ddlAuto: update
+#     show-sql: false
+#     properties:
+#       hibernate:
+#         format_sql: true
+#         dialect: org.hibernate.dialect.MySQL8Dialect
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  cloud:
+    bus:
+      enabled: true
+      refresh:
+        enabled: true
+
+## Security
+secret:
+  token: '{cipher}efea144c373436075a71cf19b776dd528667a38fee1175741a9256cbae80e0b44c3728efaed35614e03e4f8e9cd7a95e'
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

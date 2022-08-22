@@ -1,0 +1,112 @@
+#server:
+#  port: 9001
+#  error:
+#    includeStackTrace: never
+#
+#eureka:
+#  client:
+#    registerWithEureka: true
+#    fetchRegistry: true
+#    serviceUrl:
+#      defaultZone: http://localhost:9000/eureka
+#
+#spring:
+#  application:
+#    name: 'gateway'
+#  cloud:
+#    gateway:
+#      discovery.locator:
+#        enabled: true
+##        lowerCaseServiceId: true
+#      routes:
+#      - id: authWs
+#        uri: lb://auth-ws
+#        predicates:
+#        - Path=/auth-ws/**
+#        filters:
+#        - StripPrefix=1
+#        - name: Retry
+#          args:
+#            name: authWs
+#            retries: 2
+#            methods:
+#              - GET
+#              - POST
+#              - PUT
+#              - DELETE
+#      - id: sampleWs
+#        uri: lb://sample-ws
+#        predicates:
+#        - Path=/sample-ws/**
+#        filters:
+#        - StripPrefix=1
+#        - name: Retry
+#          args:
+#            name: sampleWs
+#            retries: 2
+#            methods:
+#              - GET
+#              - POST
+#              - PUT
+#              - DELETE
+##      - id: sample-ws
+##        uri: http://localhost:7997
+##        predicates:
+##        - Path=/sample-ws/**
+##        filters:
+##        - StripPrefix=1
+##          filters:
+##            - RewritePath=/v1/customer/(?<segment>.*),/api/$\{segment}
+##        filters:
+##        - PrefixPath=/aa
+#    #          filters:
+#    #            - name: Retry
+#    #              args:
+#    #                retries: 2
+#    #                series:
+#    #                  - SERVER_ERROR
+#    #                statuses:
+#    #                  - OK
+#    #                methods:
+#    #                  - GET
+#    #                  - POST
+#    #                exceptions:
+#    #                  - java.io.IOException
+#
+#    #        - id: userService2
+#    #          uri: http://localhost:9003
+#    #          predicates:
+#    #            - Path=/userService/**
+#    bus:
+#      enabled: true
+#      refresh:
+#        enabled: true
+#  rabbitmq:
+#    host: localhost
+#    port: 5672
+#    username: guest
+#    password: guest
+#
+#management:
+#  endpoint:
+#    gateway:
+#      enabled: true
+#  endpoints:
+#    web:
+#      exposure:
+#        include: '*'
+##        include: beans, health, httptrace, info, routes
+#
+##logging:
+##  level:
+##    reactor:
+##      netty: DEBUG
+##    org:
+##      springframework:
+##        cloud:
+##          gateway: DEBUG
+#
+#
+##user-service:
+##  ribbon:
+##    listOfServers: http://localhost:9002,http://localhost:9003
