@@ -7,16 +7,18 @@ import org.springframework.cloud.gateway.route.builder.routes
 import org.springframework.context.annotation.Configuration
 
 //@Configuration
-class RouteConfig {
-
+//class RouteConfig {
+//
 //    @Bean
 //    fun routeLocator(builder: RouteLocatorBuilder) = builder.routes {
-//        route("/auth-ws") {
-//            path("/auth-ws/**")
-////            filters {
+//        route() {
+//            path("/**")
+//            filters {
+//                setResponseHeader("Access-Control-Allow-Origin", "*")
 ////                rewritePath("/auth-ws/*", "/aa/*")
-////            }
-//            uri("lb:http://localhost:auth-ws")
+//            }
+////            uri("lb:http://localhost:auth-ws")
+//            uri("http://localhost:4200")
 //        }
 //    }
-}
+//}

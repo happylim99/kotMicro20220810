@@ -12,7 +12,9 @@ class WebSecurity {
 
     @Bean
     fun configure(http: HttpSecurity): SecurityFilterChain {
+        http.cors().disable()
         http.csrf().ignoringAntMatchers("/eureka/**")
+            .ignoringAntMatchers("/**")
         return http.build()
     }
 

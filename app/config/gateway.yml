@@ -15,6 +15,27 @@ spring:
     name: 'gateway'
   cloud:
     gateway:
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials, RETAIN_UNIQUE
+      # globalcors:
+      #   cors-configurations:
+      #     '[/**]':
+      #       allowed-origins: "*"
+      #       allowed-methods: "*"
+      #       allowed-headers: "*"
+            # allow-credentials: true
+      # globalcors:
+      #   add-to-simple-url-handler-mapping: true
+        # corsConfigurations:
+        #   '[/**]':
+        #     allowedOrigins: "http://localhost:4200"
+        #     allowedOriginPatterns: ["*"]
+        #     allowedHeaders: "*"
+            # allowedMethods: ["GET", "POST", "PUT", "DELETE"]
+            # - GET
+            # - POST
+            # - PUT
+            # - DELETE
       discovery.locator:
         enabled: true
 #        lowerCaseServiceId: true
@@ -34,6 +55,7 @@ spring:
               - POST
               - PUT
               - DELETE
+              - OPTIONS
       - id: sampleWs
         uri: lb://sample-ws
         predicates:
@@ -49,6 +71,8 @@ spring:
               - POST
               - PUT
               - DELETE
+              - OPTIONS
+
 #      - id: sample-ws
 #        uri: http://localhost:7997
 #        predicates:
