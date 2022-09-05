@@ -9,7 +9,7 @@ plugins {
 }
 
 group = "com.sean"
-version = "0.0.1-SNAPSHOT"
+version = "0.0.1"
 java.sourceCompatibility = JavaVersion.VERSION_17
 
 repositories {
@@ -17,6 +17,8 @@ repositories {
 }
 
 extra["springCloudVersion"] = "2021.0.3"
+
+extra["springBootAdminVersion"] = "2.7.4"
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
@@ -34,6 +36,9 @@ dependencies {
 	implementation("org.springframework.cloud:spring-cloud-starter-bus-amqp")
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
 	implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
+	implementation("org.springframework.cloud:spring-cloud-sleuth-zipkin")
+	implementation("org.springframework.cloud:spring-cloud-starter-sleuth")
+	implementation ("de.codecentric:spring-boot-admin-starter-client")
 
 	implementation(project(":base"))
 	implementation(project(":common_dto"))
@@ -48,6 +53,7 @@ dependencies {
 dependencyManagement {
 	imports {
 		mavenBom("org.springframework.cloud:spring-cloud-dependencies:${property("springCloudVersion")}")
+		mavenBom("de.codecentric:spring-boot-admin-dependencies:${property("springBootAdminVersion")}")
 	}
 }
 

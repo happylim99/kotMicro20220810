@@ -1,0 +1,23 @@
+version: '3'
+services:
+  auth-ws:
+      container_name: auth-ws
+      image: "auth-ws"
+      build: .
+      ports:
+        - "9003:9003"
+#       networks:
+#         spring-network:
+#             ipv4_address: 172.20.0.2
+
+# networks: 
+#   spring-network: 
+#     external: true
+    # name: spring-network
+
+# networks:
+#   spring-network:
+#     driver: spring-network
+#     ipam:
+#       config:
+#         - subnet: 172.20.0.0/16

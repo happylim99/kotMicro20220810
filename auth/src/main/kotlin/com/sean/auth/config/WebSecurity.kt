@@ -66,7 +66,7 @@ abstract class WebSecurity {
             .antMatchers("/user/register").permitAll()
             .antMatchers("/user/login").permitAll()
             .antMatchers("/user/refreshToken").permitAll()
-            .antMatchers("/actuator/*").permitAll()
+            .antMatchers("/actuator/**").permitAll()
             .and()
             .httpBasic()
             .and()

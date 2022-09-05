@@ -1,0 +1,23 @@
+version: '3'
+services:
+  zipkin-server:
+      container_name: zipkin-server
+      image: "zipkin-server"
+      build: .
+      ports:
+        - "9411:9411"
+#       networks:
+#         spring-network:
+#             ipv4_address: 172.20.0.2
+
+# networks: 
+#   spring-network: 
+#     external: true
+    # name: spring-network
+
+# networks:
+#   spring-network:
+#     driver: spring-network
+#     ipam:
+#       config:
+#         - subnet: 172.20.0.0/16

@@ -5,16 +5,22 @@ server:
 
 eureka:
   client:
+    enabled: false
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
+#      defaultZone: http://host.docker.internal:9000/eureka
       defaultZone: http://localhost:9000/eureka
 
 spring:
   application:
     name: auth-ws
+#  autoconfigure:
+#    exclude:
+#      - org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration
   datasource:
     url: jdbc:mysql://localhost:3306/auth_ws
+#    url: jdbc:mysql://host.docker.internal:3306/auth_ws
     username: auth_ws
     password: '@Auth123511'
   jpa:
@@ -32,9 +38,25 @@ spring:
     password: guest
   cloud:
     bus:
-      enabled: true
+      enabled: false
       refresh:
         enabled: true
+  zipkin:
+    baseUrl: http://127.0.0.1:9411/
+#    baseUrl: http://host.docker.internal:9411/
+  boot:
+    admin:
+      client:
+        instance:
+          prefer-ip: true
+        url: http://127.0.0.1:7999
+#        url: http://host.docker.internal:7999
+logging:
+  file:
+    name: /opt/auth-ws.log
+#    maxHistory: 20
+#    maxSize: 50MB
+
 #  main:
 #    allow-bean-definition-overriding: true
 
@@ -58,3 +80,13 @@ gmail:
         auth: true
         starttls:
           enable: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      showDetails: always
+

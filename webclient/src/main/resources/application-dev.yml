@@ -1,0 +1,11 @@
+server:
+  port: 9100
+
+spring:
+  application:
+    name: Webclient
+
+comm:
+  authBase: http://localhost:9003
+  login: /user/login
+  showAll: /user/showAll
